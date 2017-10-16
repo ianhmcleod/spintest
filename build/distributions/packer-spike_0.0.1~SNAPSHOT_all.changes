@@ -1,0 +1,19 @@
+Format: 1.8
+Date: Mon, 16 Oct 2017 14:17:04 -0500
+Source: packer-spike
+Binary: packer-spike
+Architecture: all
+Version: 0.0.1~SNAPSHOT
+Urgency: low
+Maintainer: ianmcleod
+Changed-By: ianmcleod
+Description:
+ packer-spike - packer-spike
+Changes:
+ packer-spike (0.0.1~SNAPSHOT) ; urgency=low
+Checksums-Sha1:
+ fc511121ab2e2a17b88e84af6fdfb62e8f3cfc39 12829860 packer-spike_0.0.1~SNAPSHOT_all.deb
+Checksums-Sha256:
+ 63f5a6bff5f263816f96d8f6eb9cb05448fdaf3531da5db1cd50c398d6be7b24 12829860 packer-spike_0.0.1~SNAPSHOT_all.deb
+Files:
+ 59011c05fe3237657c30fc298ab7c1d4 12829860 java optional packer-spike_0.0.1~SNAPSHOT_all.deb
