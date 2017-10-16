@@ -1,4 +1,0 @@
-#!/bin/sh
-mkdir -p ./main
-chown nobody ./main
-exec setuidgid nobody multilog t ./main
