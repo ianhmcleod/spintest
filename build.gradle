@@ -35,7 +35,6 @@ task packDeb(type: Deb, dependsOn: bootRepackage) {
 	version = '1'
 	release '1'
 
-	requires('default-jdk')
 	from('build/libs/.') {
 		into "/opt/${project.name}"
 	}
