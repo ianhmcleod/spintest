@@ -15,7 +15,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'org.springframework.boot'
-apply plugin: 'nebula.ospackage-application-daemon'
+apply plugin: 'nebula.ospackage-base'
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
@@ -30,3 +30,31 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 }
 
+task packDeb(type: Deb, dependsOn: bootRepackage) {
+	packageName = project.name
+	version = '1'
+	release '1'
+
+	requires('default-jdk')
+	from('build/libs/.') {
+		into "/opt/${project.name}"
+	}
+
+	preInstall = file('pkg_scripts/preInstall.sh')
+	postInstall = file('pkg_scripts/postInstall.sh')
+	postUninstall = file('pkg_scripts/postUninstall.sh')
+
+	from('pkg_scripts/spintest.conf') {
+		into('/etc/init')
+		user = 'root'
+		permissionGroup = 'root'
+	}
+
+	from(file('pkg_scripts/spintest')) {
+		into('/etc/logrotate.d')
+		user = 'root'
+		permissionGroup = 'root'
+		fileType CONFIG.set(NOREPLACE.flag())
+	}
+
+}
