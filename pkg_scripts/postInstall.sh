@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # create log folder
-install  --mode=755 --directory  /var/log/spintest
+install  --mode=755 --directory /var/log/spintest
 
 # start services
 service spintest start

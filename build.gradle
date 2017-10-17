@@ -35,19 +35,22 @@ task packDeb(type: Deb, dependsOn: bootRepackage) {
 	version = '1'
 	release '1'
 
-	from('build/libs/.') {
+	from('build/libs/spintest-0.0.1-SNAPSHOT.jar') {
 		into "/opt/${project.name}"
 	}
+
+	link('/etc/init.d/spintest', "/opt/${project.name}/spintest-0.0.1-SNAPSHOT.jar")
 
 	preInstall = file('pkg_scripts/preInstall.sh')
 	postInstall = file('pkg_scripts/postInstall.sh')
 	postUninstall = file('pkg_scripts/postUninstall.sh')
 
-	from('pkg_scripts/spintest.conf') {
-		into('/etc/init')
-		user = 'root'
-		permissionGroup = 'root'
-	}
+
+//	from('pkg_scripts/spintest.conf') {
+//		into('/etc/init')
+//		user = 'root'
+//		permissionGroup = 'root'
+//	}
 
 	from(file('pkg_scripts/spintest')) {
 		into('/etc/logrotate.d')
