@@ -30,6 +30,10 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 }
 
+springBoot {
+    executable = true
+}
+
 task packDeb(type: Deb, dependsOn: bootRepackage) {
 	packageName = project.name
 	version = '1'
