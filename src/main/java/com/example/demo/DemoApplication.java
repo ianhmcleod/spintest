@@ -26,7 +26,13 @@ class TestController {
 		return new HashMap<String, String>() {{put("healthy", "yep");}};
 	}
 
-    @RequestMapping("/hello")
+    @RequestMapping("/hi")
+    public Map<String, String> yo2() {
+        return new HashMap<String, String>() {{put("hi", "hello4");}};
+    }
+
+
+        @RequestMapping("/hello")
     public Map<String, String> yo() {
         return new HashMap<String, String>() {{put("hi", "hello");}};
     }
