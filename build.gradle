@@ -37,9 +37,9 @@ springBoot {
 task packDeb(type: Deb, dependsOn: bootRepackage) {
 	packageName = project.name
 
-	from("build/libs/build/libs/spintest-${version}.jar") {
+	from("build/libs/spintest-${version}.jar") {
 		rename { String fileName ->
-			fileName.replace("-${project.version}", '')
+			fileName.replace("-${projectversion}", '')
 		}
 		into "/opt/${project.name}"
 	}
