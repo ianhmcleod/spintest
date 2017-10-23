@@ -39,7 +39,7 @@ task packDeb(type: Deb, dependsOn: bootRepackage) {
 
 	from("build/libs/build/libs/spintest-${version}.jar") {
 		rename { String fileName ->
-			fileName.replace("-${version}", '')
+			fileName.replace("-${project.version}", '')
 		}
 		into "/opt/${project.name}"
 	}
