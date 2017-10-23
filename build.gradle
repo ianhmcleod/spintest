@@ -18,7 +18,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'nebula.ospackage-base'
 
 group = 'com.example'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.2'
 sourceCompatibility = 1.8
 
 repositories {
@@ -36,24 +36,18 @@ springBoot {
 
 task packDeb(type: Deb, dependsOn: bootRepackage) {
 	packageName = project.name
-	version = '1'
-	release '1'
 
-	from('build/libs/spintest-0.0.1-SNAPSHOT.jar') {
+	from("build/libs/build/libs/spintest-${version}.jar") {
+		rename { String fileName ->
+			fileName.replace("-${version}", '')
+		}
 		into "/opt/${project.name}"
 	}
-
 
 	preInstall = file('pkg_scripts/preInstall.sh')
 	postInstall = file('pkg_scripts/postInstall.sh')
 	postUninstall = file('pkg_scripts/postUninstall.sh')
 
-
-//	from('pkg_scripts/spintest.conf') {
-//		into('/etc/init')
-//		user = 'root'
-//		permissionGroup = 'root'
-//	}
 	from('pkg_scripts/spintest.service') {
 		into('/etc/systemd/system')
 		user = 'root'

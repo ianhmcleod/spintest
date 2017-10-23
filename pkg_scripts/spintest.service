@@ -4,7 +4,7 @@ After=syslog.target
 
 [Service]
 User=ubuntu
-ExecStart=/opt/spintest/spintest-0.0.1-SNAPSHOT.jar
+ExecStart=/opt/spintest/spintest.jar
 SuccessExitStatus=143
 
 [Install]
